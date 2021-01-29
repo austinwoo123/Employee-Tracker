@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-// const consoleTable = require("console.table")
+const consoleTable = require("console.table")
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -34,7 +34,7 @@ function start() {
     }).then(function (answer) {
         switch (answer.choice) {
             case "View all employees":
-                viewEmployees();
+                viewAllEmployees();
                 break;
 
             case "View all departments":
@@ -63,7 +63,14 @@ function start() {
         }
     })
 }
-function viewEmployees()
+function viewAllEmployees() {
+    connection.query("SELECT * FROM employee",
+        function (err, res) {
+            if (err) throw err
+            console.table(res);
+            start()
+        })
 
+}
 
 

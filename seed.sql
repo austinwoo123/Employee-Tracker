@@ -1,4 +1,4 @@
-USE employeTracker_DB
+USE employeeTracker_DB
 
 INSERT INTO department (name)
 VALUE ("Sales"),("Engineering"),("Finance"), ("Legal");
