@@ -38,7 +38,7 @@ function start() {
                 break;
 
             case "View all departments":
-                viewDeparments();
+                viewDepartments();
                 break;
 
             case "View all roles":
@@ -73,4 +73,64 @@ function viewAllEmployees() {
 
 }
 
+function viewDepartments() {
+    connection.query("SELECT * FROM department", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        start()
+    })
+};
 
+function viewAllRoles() {
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        start()
+    })
+}
+
+function addEmployee() {
+    inquirer.prompt([{
+        type: "input",
+        message: "What is the employee's first name?",
+        name: "firstName"
+    },
+    {
+        type: "input",
+        message: "What is the employee's last name?",
+        name: "lastName"
+    },
+    {
+        type: "input",
+        message: "What is the employee's manager id?",
+        name: "managerId"
+    },
+    {
+        type: "input",
+        message: "What is the employee's role id",
+        name: "roleId"
+    },
+    ]).then(function (res) {
+        //     connection.query
+
+    })
+}
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the name of the department that you would like to add?",
+            name: "newDepartment"
+        }
+    ]).then(function (answer) {
+        connection.query("INSERT INTO department SET ?", {
+            name: answer.newDepartment
+        });
+        connection.query("SELECT * FROM department", function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            start();
+        })
+    })
+}
