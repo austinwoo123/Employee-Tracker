@@ -24,9 +24,13 @@ First, branch the Github Repo and clone the repo to your local machine. Next, in
 
 
 ## Built with
+- Node
+- Gitbash
+- Inquirer 
+- MySQL
 
 ## Licenses
-    MIT License
+MIT License
 
 ## Author
    Austin Woo

@@ -181,7 +181,24 @@ function addRole() {
 }
 
 function updateEmployee() {
-
+    connection.query("SELECT * FROM employee", function (err, res) {
+        if (err) throw err
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "Which employee's role id do you want to update?",
+                name: "employeeRoleId"
+            }
+        ]).then(function (answer) {
+            connection.query("UPDATE employee SET id=? WHERE id ?",
+                {
+                    role_id: answer.employeeRole
+                },
+                function (err) {
+                    if (err) throw err
+                    console.table(res)
+                    start()
+                })
+        });
+    })
 }
-
-
