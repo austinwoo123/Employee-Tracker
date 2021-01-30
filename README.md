@@ -6,7 +6,7 @@ My task was to create an interace that will make it easy for non-developers to v
 
 ## Table of Contents
 1. [Description](#description)
-2. [Screenshot](#Screenshot)
+2. [Walkthrough Video](#Walkthrough-video)
 3. [Installation](#Installation)
 4. [Code Snippet](#code-snippet)
 5. [Built with](#built-with)
@@ -15,7 +15,8 @@ My task was to create an interace that will make it easy for non-developers to v
 8. [Questions](#Questions)
 9. [Acknowledgements](#acknowledgements)
 
-## Screenshot
+## Walkthrough Video
+[Link to walkthrough video](https://drive.google.com/file/d/1zoU454uTZLr97myp_jSH_QIW4vGUfhkf/view)
 
 ## Installation
 First, branch the Github Repo and clone the repo to your local machine. Next, install project dependecies by typing "npm install" into your gitbash terminal. Finally type "node app.js" to run the application through gitbash terminal and respond to the prompts.
