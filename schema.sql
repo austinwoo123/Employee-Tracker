@@ -7,7 +7,7 @@ USE employeeTracker_DB;
 CREATE TABLE department (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
@@ -26,7 +26,7 @@ CREATE TABLE employee (
     last_name VARCHAR (30),
     manager_id INT,
     role_id INT,
-    Primary KEY (id),
+    Primary KEY (id)
 
 );
 

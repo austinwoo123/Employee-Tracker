@@ -108,7 +108,7 @@ function addEmployee() {
     },
     {
         type: "input",
-        message: "What is the employee's role id",
+        message: "What is the employee's role id?",
         name: "roleId"
     },
     ]).then(function (answer) {
@@ -124,6 +124,7 @@ function addEmployee() {
             console.table(res);
             start();
         })
+
     })
 }
 
@@ -143,6 +144,7 @@ function addDepartment() {
             console.table(res);
             start();
         })
+
     })
 }
 
@@ -161,13 +163,13 @@ function addRole() {
         {
             type: "number",
             message: "What is the the department ID number?",
-            name: "department_id"
+            name: "departmentId"
         }
     ]).then(function (answer) {
         connection.query("INSERT INTO role SET ?", {
             title: answer.title,
             salary: answer.salary,
-            department_id: answer.department_id
+            department_id: answer.departmentId
 
         });
         connection.query("SELECT * FROM role", function (err, res) {

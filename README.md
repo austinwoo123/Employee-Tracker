@@ -1,8 +1,7 @@
 # Employee-Tracker
 
 ## Description
-
-
+My task was to create an interace that will make it easy for non-developers to view and interact with information sored in databases. I built a employee tracker application that helps manage a company's employees using node, inquirer, and MySQL.
 
 
 ## Table of Contents
@@ -19,7 +18,7 @@
 ## Screenshot
 
 ## Installation
-First, branch the Github Repo and clone the repo to your local machine. Next, install project dependecies by typing "npm install" into your gitbash terminal.
+First, branch the Github Repo and clone the repo to your local machine. Next, install project dependecies by typing "npm install" into your gitbash terminal. Finally type "node app.js" to run the application through gitbash terminal and respond to the prompts.
 
 ## Code Snippet
 
