@@ -111,9 +111,19 @@ function addEmployee() {
         message: "What is the employee's role id",
         name: "roleId"
     },
-    ]).then(function (res) {
-        //     connection.query
+    ]).then(function (answer) {
+        connection.query("INSERT INTO employee SET ?", {
+            first_name: answer.firstName,
+            last_Name: answer.lastName,
+            manager_id: answer.managerId,
+            role_id: answer.roleId
 
+        });
+        connection.query("SELECT * FROM employee", function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            start();
+        })
     })
 }
 
