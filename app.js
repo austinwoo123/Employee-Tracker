@@ -1,7 +1,8 @@
+//dependencies/requirements
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table")
-
+//establish connection to sql database
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -14,7 +15,7 @@ connection.connect(function (err) {
     if (err) throw err;
     start()
 });
-
+//function that prompts user the options that they can choose from
 function start() {
     inquirer.prompt({
 
@@ -134,3 +135,41 @@ function addDepartment() {
         })
     })
 }
+
+function addRole() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the title of the role you wish to add?",
+            name: "title"
+        },
+        {
+            type: "number",
+            message: "What is the salary of the role?",
+            name: "salary"
+        },
+        {
+            type: "number",
+            message: "What is the the department ID number?",
+            name: "department_id"
+        }
+    ]).then(function (answer) {
+        connection.query("INSERT INTO role SET ?", {
+            title: answer.title,
+            salary: answer.salary,
+            department_id: answer.department_id
+
+        });
+        connection.query("SELECT * FROM role", function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            start();
+        })
+    })
+}
+
+function updateEmployee() {
+
+}
+
+
