@@ -181,24 +181,25 @@ function addRole() {
 }
 
 function updateEmployee() {
-    connection.query("SELECT * FROM employee", function (err, res) {
-        if (err) throw err
-        inquirer.prompt([
-            {
-                type: "input",
-                message: "Which employee's role id do you want to update?",
-                name: "employeeRoleId"
-            }
-        ]).then(function (answer) {
-            connection.query("UPDATE employee SET id=? WHERE id ?",
-                {
-                    role_id: answer.employeeRole
-                },
-                function (err) {
-                    if (err) throw err
-                    console.table(res)
-                    start()
-                })
-        });
-    })
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Which employee (enter first name) would you like to update ?",
+            name: "firstName"
+        },
+        {
+            type: "input",
+            message: "What is the new role ID that you would like to update for this employee?",
+            name: "roleId"
+        }
+    ]).then(function (answer) {
+        connection.query("UPDATE employee SET role_id =? WHERE first_name =?", [answer.roleId, answer.firstName.trim()], function (err, res) {
+            if (err) throw err;
+            // console.log(answer.roleId);
+            // console.log(answer.firstName);
+            console.log(res.affectedRows + " rows updated \n");
+            start();
+        })
+    });
 }
+

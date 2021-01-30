@@ -21,7 +21,72 @@ My task was to create an interace that will make it easy for non-developers to v
 First, branch the Github Repo and clone the repo to your local machine. Next, install project dependecies by typing "npm install" into your gitbash terminal. Finally type "node app.js" to run the application through gitbash terminal and respond to the prompts.
 
 ## Code Snippet
+```
+function start() {
+    inquirer.prompt({
 
+        type: "list",
+        message: "What would you like to do?",
+        name: "choice",
+        choices: [
+            "View all employees",
+            "View all departments",
+            "View all roles",
+            "Update Employee",
+            "Add Employee",
+            "Add Role",
+            "Add Department"
+        ]
+
+    }).then(function (answer) {
+        switch (answer.choice) {
+            case "View all employees":
+                viewAllEmployees();
+                break;
+
+            case "View all departments":
+                viewDepartments();
+                break;
+
+            case "View all roles":
+                viewAllRoles();
+                break;
+
+            case "Update Employee":
+                updateEmployee();
+                break;
+
+            case "Add Employee":
+                addEmployee();
+                break;
+
+            case "Add Role":
+                addRole();
+                break;
+
+            case "Add Department":
+                addDepartment();
+                break;
+        }
+    })
+}
+```
+This code shows how I am using the inquirer npm package to prompt the user into choosing an option from a list of choices. Each choice that they choose will execute a function that will either display, add, or update the data from the MySQL database.
+
+```
+USE employeeTracker_DB;
+
+INSERT INTO department (name)
+VALUE ("Sales"),("Engineering"),("Finance"), ("Legal");
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sales Lead",80000,1),("Lead Engineer",150000,2),("Accountant",100000,3),("Lawyer",120000,4),("Software Engineer", 80000,2);
+
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("John","Smith",001,1),("Austin", "Woo",002,2),("Justin", "Finley", 003,3),("Peter", "Lee", 004, 4), ("Brandon","Ngo",005,2);
+
+```
+This code shows how I inserted values into each of the tables from the schema.sql file. This code is from my seed.sql file. I wrote the values in an alternative way where I am able to put the values of each of the tables in one line.
 
 ## Built with
 - Node
